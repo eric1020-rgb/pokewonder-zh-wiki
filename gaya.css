@@ -1,0 +1,181 @@
+/* Wiki Pokémon Wonderful: gaya senada game (latar gelap game/gaya.css, kartu krem bergaris biru tua seperti kotak dialog
+   FRLG, aksen kuning), gambar piksel tajam. Disalin apa adanya ke game/wiki/gaya.css oleh alat/wiki/bangun_wiki.mjs. */
+:root { --bg: #14171f; --bg2: #1c2130; --text: #e8ebf2; --muted: #9aa3b5; --accent: #ffd34d; --card: #fbfbf4; --ink: #1d2230;
+        --edge: #3a4560; --edge2: #6878a8; --link: #2f5fb3; --soft: #eef0e4; color-scheme: dark; }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+img { image-rendering: pixelated; }
+a { color: var(--accent); }
+main { max-width: 1040px; margin: 0 auto; padding: 12px 16px 32px; }
+h1 { font-size: 26px; margin: 8px 0 14px; letter-spacing: .5px; text-shadow: 2px 2px 0 #000; }
+h1 small { color: var(--muted); font-size: 18px; }
+h2 { font-size: 17px; margin: 0 0 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--ink); }
+h3 { font-size: 15px; margin: 14px 0 6px; color: var(--edge); }
+.kecil, small { font-size: 13px; }
+
+/* ---- kepala halaman */
+.atas { position: sticky; top: 0; z-index: 5; background: #0e1118; border-bottom: 3px solid var(--edge); }
+.baris1 { max-width: 1040px; margin: 0 auto; display: flex; align-items: center; gap: 10px; padding: 8px 16px; }
+.logo { display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-weight: 700; white-space: nowrap; }
+.logo b { color: var(--accent); }
+.cari { position: relative; flex: 1; min-width: 0; }
+.cari input { width: 100%; font: 16px system-ui, sans-serif; color: var(--text); background: var(--bg2); border: 2px solid var(--edge);
+              border-radius: 6px; padding: 6px 10px; outline: none; }
+.cari input:focus { border-color: var(--accent); }
+.saran { position: absolute; left: 0; right: 0; top: calc(100% + 4px); background: var(--card); color: var(--ink); border: 3px solid var(--edge);
+         border-radius: 6px; box-shadow: 0 6px 20px rgba(0, 0, 0, .5); max-height: 70vh; overflow-y: auto; }
+.saran a, .hasil-cari a.h { display: flex; align-items: center; gap: 8px; padding: 6px 10px; color: var(--ink); text-decoration: none; border-bottom: 1px solid #e2e4d6; }
+.saran a.pilih, .saran a:hover, .hasil-cari a.h:hover { background: #fff3c4; }
+.saran img, .hasil-cari img { width: 32px; height: 32px; object-fit: contain; }
+.saran .j, .hasil-cari .j { margin-left: auto; font-size: 12px; color: #6a7286; text-transform: uppercase; }
+.bahasa, .main { flex: none; font-weight: 700; text-decoration: none; padding: 6px 10px; border-radius: 6px; border: 2px solid var(--edge2); color: var(--text); }
+.main { background: var(--accent); color: var(--ink); border-color: #b8962c; }
+.menu { max-width: 1040px; margin: 0 auto; display: flex; gap: 2px; padding: 0 12px; overflow-x: auto; scrollbar-width: none; }
+.menu a { color: var(--muted); text-decoration: none; padding: 6px 10px 8px; font-weight: 600; white-space: nowrap; border-bottom: 3px solid transparent; margin-bottom: -3px; }
+.menu a.aktif, .menu a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.remah { font-size: 13px; color: var(--muted); margin-top: 6px; }
+.remah a { color: var(--muted); }
+
+/* ---- kotak isi (kotak dialog FRLG) */
+.kotak { background: var(--card); color: var(--ink); border: 3px solid var(--edge); border-radius: 8px; box-shadow: inset 0 0 0 2px var(--edge2), 3px 3px 0 #000;
+         padding: 14px 16px; margin: 0 0 16px; }
+.kotak a { color: var(--link); }
+.kotak p { margin: 6px 0; }
+details.kotak summary { cursor: pointer; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+details.kotak[open] summary { margin-bottom: 10px; }
+.pembuka { font-size: 16px; }
+.label { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; background: #e8d9a0; color: #5a4a10; border-radius: 4px; padding: 0 5px; }
+
+/* ---- tabel */
+.gulir { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #dfe1d2; vertical-align: middle; }
+th { background: var(--edge); color: #fff; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; white-space: nowrap; }
+tbody tr:nth-child(even) { background: var(--soft); }
+table.urut th { cursor: pointer; }
+table.urut th::after { content: ' ↕'; opacity: .5; }
+.main > .gulir table, main > .gulir table { background: var(--card); color: var(--ink); }
+main > .gulir { border: 3px solid var(--edge); border-radius: 8px; margin-bottom: 16px; }
+main > .gulir a { color: var(--link); }
+td .mon, td .itm, .grid-belajar .mon { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+td img.ik-mon { width: 32px; height: 32px; }
+.mini img.ik-mon { width: 28px; height: 28px; }
+.bar { display: inline-block; width: 120px; max-width: 30vw; height: 8px; background: #dfe1d2; border-radius: 4px; overflow: hidden; vertical-align: middle; }
+.bar span { display: block; height: 100%; background: linear-gradient(90deg, #f0a030, #58c050); }
+
+/* ---- ikon */
+.ik-mon { width: 40px; height: 40px; object-fit: contain; vertical-align: middle; }
+.ik-mon.besar { width: 128px; height: 128px; background: radial-gradient(circle at 50% 70%, #dfe7c8 0 55%, transparent 56%); }
+.ik-item { width: 24px; height: 24px; vertical-align: middle; margin-right: 4px; }
+.ik-item.ik-lencana { width: 32px; height: 32px; }   /* sprite lencana 16x16, skala x2 */
+
+/* ---- tipe (warna tipe resmi) */
+.tipe { display: inline-block; min-width: 64px; text-align: center; font-size: 12px; font-weight: 700; text-transform: uppercase; color: #fff;
+        padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(0, 0, 0, .35); text-shadow: 1px 1px 0 rgba(0, 0, 0, .45); }
+a.tipe-a { text-decoration: none; }
+.t-normal { background: #a8a878; } .t-fire { background: #f08030; } .t-water { background: #6890f0; } .t-grass { background: #78c850; }
+.t-electric { background: #e0b820; } .t-ice { background: #78c8c8; } .t-fighting { background: #c03028; } .t-poison { background: #a040a0; }
+.t-ground { background: #c8a048; } .t-flying { background: #a890f0; } .t-psychic { background: #f85888; } .t-bug { background: #a8b820; }
+.t-rock { background: #b8a038; } .t-ghost { background: #705898; } .t-dragon { background: #7038f8; } .t-dark { background: #705848; }
+.t-steel { background: #a0a0c0; } .t-fairy { background: #ee99ac; }
+.tipe-baris { display: flex; gap: 6px; margin-bottom: 8px; }
+
+/* ---- halaman Pokémon / item / jurus */
+.kepala-mon, .kepala-item { display: flex; gap: 16px; align-items: flex-start; background: var(--card); color: var(--ink); border: 3px solid var(--edge);
+  border-radius: 8px; box-shadow: inset 0 0 0 2px var(--edge2), 3px 3px 0 #000; padding: 14px 16px; margin-bottom: 16px; }
+.kepala-item .ik-item { width: 48px; height: 48px; }
+.kantong { font-size: 12px; font-weight: 700; color: var(--edge); text-transform: uppercase; }
+dl.info, dl.fakta { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 0; }
+dl.fakta { background: var(--card); color: var(--ink); border: 3px solid var(--edge); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; box-shadow: 3px 3px 0 #000; }
+dl.fakta a { color: var(--link); }
+dt { font-weight: 700; color: var(--edge); }
+dd { margin: 0; }
+.dex { font-style: italic; color: #4a5268; }
+.evo { display: flex; flex-direction: column; gap: 6px; }
+.evo-langkah { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.panah { display: inline-flex; flex-direction: column; align-items: center; font-size: 22px; line-height: 1; color: var(--edge); }
+.panah small { font-size: 12px; color: var(--ink); }
+.grid-belajar { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+
+/* ---- daftar (grid kartu) */
+.saring { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.saring input { font: 16px system-ui, sans-serif; color: var(--text); background: var(--bg2); border: 2px solid var(--edge); border-radius: 6px; padding: 6px 10px; max-width: 360px; }
+.chip-tipe { display: flex; flex-wrap: wrap; gap: 4px; }
+.chip-tipe button { cursor: pointer; opacity: .55; }
+.chip-tipe button.on { opacity: 1; outline: 2px solid var(--accent); }
+.grid-mon { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px; margin-bottom: 16px; }
+.kartu-mon { display: grid; justify-items: center; background: var(--card); color: var(--ink); text-decoration: none; border: 3px solid var(--edge);
+             border-radius: 8px; padding: 6px 4px; box-shadow: 2px 2px 0 #000; }
+.kartu-mon:hover { border-color: var(--accent); }
+.kartu-mon .ik-mon { width: 64px; height: 64px; }
+.kartu-mon .no { font-size: 11px; color: #6a7286; }
+.kartu-mon .nm { font-weight: 700; font-size: 14px; text-align: center; }
+.kartu-mon .tp { display: flex; gap: 3px; margin-top: 2px; }
+.kartu-mon .tp i { width: 18px; height: 6px; border-radius: 3px; }
+.kartu-mon.segera { opacity: .55; }
+.grid-item { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 4px 12px; }
+.kartu-item { display: flex; align-items: center; gap: 4px; color: var(--link); text-decoration: none; padding: 3px 0; }
+.kartu-item:hover span { text-decoration: underline; }
+.grid-menu { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin: 14px 0 18px; }
+.kartu-menu { display: grid; grid-template-columns: 48px 1fr; grid-template-rows: auto auto; column-gap: 10px; align-items: center; background: var(--card);
+              color: var(--ink); text-decoration: none; border: 3px solid var(--edge); border-radius: 8px; padding: 12px; box-shadow: 3px 3px 0 #000; }
+.kartu-menu img { grid-row: span 2; width: 48px; height: 48px; object-fit: contain; }
+.kartu-menu b { font-size: 18px; }
+.kartu-menu span { font-size: 13px; color: #4a5268; }
+.kartu-menu:hover { border-color: var(--accent); }
+.tersembunyi { display: none !important; }
+.hasil-cari { background: var(--card); color: var(--ink); border: 3px solid var(--edge); border-radius: 8px; padding: 8px; }
+
+.bawah { border-top: 3px solid var(--edge); color: var(--muted); font-size: 13px; text-align: center; padding: 12px 16px 24px; }
+
+@media (max-width: 640px) {
+  .baris1 { flex-wrap: wrap; gap: 8px; padding: 8px 12px; }
+  .logo span { font-size: 15px; }
+  .cari { order: 3; flex-basis: 100%; }
+  .bahasa { margin-left: auto; }
+  main { padding: 8px 12px 24px; }
+  h1 { font-size: 22px; }
+  .kepala-mon { flex-direction: column; align-items: center; }
+  .ik-mon.besar { width: 96px; height: 96px; }
+  dl.info, dl.fakta { grid-template-columns: max-content 1fr; font-size: 14px; }
+  .kotak { padding: 12px; }
+  th, td { padding: 5px 6px; }
+  .grid-mon { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
+}
+
+/* ---- tabel tipe (sistem/tipe) */
+.tipe-tabel table { width: auto; font-size: 13px; }
+.tipe-tabel th, .tipe-tabel td { padding: 3px; text-align: center; border: 1px solid #dfe1d2; }
+.tipe-tabel thead th { background: var(--card); padding: 2px; }
+.tipe-tabel tbody th { background: var(--card); text-align: left; }
+.tipe-tabel .tipe.kecil { min-width: 30px; font-size: 10px; padding: 1px 2px; }
+.tipe-tabel td { width: 28px; height: 26px; font-weight: 700; }
+.ef2 { background: #9ad88a; color: #1d5a10; } .ef05 { background: #f0a8a0; color: #7a1a10; } .ef0 { background: #4a4f60; color: #fff; }
+main > .gulir.tipe-tabel { background: var(--card); }
+.kepala-mon a, .kepala-item a { color: var(--link); }
+.tipe-tabel thead th:first-child { font-size: 11px; color: var(--edge); white-space: nowrap; }
+
+/* ---- peta dunia (SVG dari world_x/world_y map), FAQ, update */
+.peta-dunia { display: block; width: 100%; min-width: 640px; height: auto; background: #3a6aa8; }
+.peta-dunia rect { stroke: #1d2230; stroke-width: .6; }
+.peta-dunia a:hover rect { fill: var(--accent); }
+.peta-dunia text { font-family: system-ui, sans-serif; font-weight: 700; fill: #1d2230; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+.kotak-warna { display: inline-block; width: 12px; height: 12px; border: 1px solid #000; vertical-align: middle; margin: 0 4px 0 8px; }
+details.faq summary { text-transform: none; letter-spacing: 0; font-size: 16px; }
+.tgl { color: #6a7286; font-size: 12px; letter-spacing: 0; }
+.saran-bahasa { display: flex; justify-content: space-between; align-items: center; gap: 8px; background: var(--accent); color: var(--ink); border-radius: 6px; padding: 6px 10px; margin: 8px 0; font-weight: 600; }
+.saran-bahasa a { color: var(--ink); }
+.saran-bahasa button { background: none; border: 0; font-size: 20px; cursor: pointer; color: var(--ink); }
+.kotak p img.ik-mon, .kotak li img.ik-mon { width: 28px; height: 28px; }
+@media (min-width: 641px) { .menu { flex-wrap: wrap; overflow: visible; } }
+
+/* 繁體中文版追加 */
+body { font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Noto Sans CJK TC", "Source Han Sans TC", system-ui, sans-serif; }
+.edisi { font-size: 11px; font-weight: 800; letter-spacing: .06em; color: #1d2230; background: var(--accent); border-radius: 4px; padding: 1px 6px; white-space: nowrap; }
+h1 .latin, .kartu-mon .en { font-weight: 600; }
+h1 .latin { font-size: 15px; margin-left: 8px; color: var(--muted); text-shadow: none; }
+.kartu-mon .en { font-size: 11px; color: #6a7286; font-weight: 500; text-align: center; line-height: 1.2; }
+.sumber { border-color: #8a6a20; }
+.sumber h2 { color: #6a4a10; }
+.hasil-cari a.h small { color: #6a7286; margin-left: 4px; }
