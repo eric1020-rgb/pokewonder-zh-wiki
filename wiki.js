@@ -14,6 +14,7 @@
   const norm = (s) =>
     String(s || "")
       .normalize("NFKC")
+      .normalize("NFD")
       .toLowerCase()
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/[^0-9a-z\u3400-\u9fff\uf900-\ufaff]/g, "");
